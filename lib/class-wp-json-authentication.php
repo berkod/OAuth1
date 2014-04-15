@@ -64,7 +64,6 @@ abstract class WP_JSON_Authentication {
 		$data = array();
 		$data['post_title'] = $params['name'];
 		$data['post_content'] = $params['description'];
-		unset( $data['post_title'], $data['post_content'] );
 
 		$data['post_type'] = 'json_consumer';
 
