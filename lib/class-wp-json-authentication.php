@@ -37,12 +37,13 @@ abstract class WP_JSON_Authentication {
 			'post_status' => 'any',
 			'meta_query' => array(
 				array(
-					'meta_key' => 'key',
-					'meta_value' => $key,
+					'key' => 'key',
+                    'value' => $key,
+                    'compare' => 'IN'
 				),
 				array(
-					'meta_key' => 'type',
-					'meta_value' => $this->type,
+					'key' => 'type',
+					'value' => $this->type,
 				),
 			),
 		) );
@@ -64,6 +65,7 @@ abstract class WP_JSON_Authentication {
 		$data = array();
 		$data['post_title'] = $params['name'];
 		$data['post_content'] = $params['description'];
+		unset( $data['post_title'], $data['post_content'] );
 
 		$data['post_type'] = 'json_consumer';
 
